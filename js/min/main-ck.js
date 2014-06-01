@@ -1,0 +1,1 @@
+!function(t){t(document).ready(function(){t("#jazz-masters").mapster({fill:!0,fillColor:"0000FF",fillOpacity:.2,stroke:!0,strokeColor:"00FF00",strokeWidth:.5}),t("area").mapster("set",!0)})}(jQuery);
