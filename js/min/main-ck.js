@@ -1,1 +1,1 @@
-!function(t){t(document).ready(function(){var r=t("#jazz-masters"),e=t("area");r.mapster({set:!0,fill:!0,fillColor:"000000",fillOpacity:0,stroke:!0,strokeColor:"00FF00",strokeWidth:1,render_highlight:{strokeWidth:1,fillColor:"0000FF",fillOpacity:.25}}),e.mapster("set",!0)})}(jQuery);
+!function(r){r(document).ready(function(){var t=r("#jazz-masters"),e=r("area");t.mapster({set:!0,fill:!0,fillColor:"000000",fillOpacity:0,stroke:!0,strokeColor:"00FF00",strokeWidth:1,render_highlight:{fillColor:"FFFFFF",fillOpacity:.33}}),e.mapster("set",!0)})}(jQuery);

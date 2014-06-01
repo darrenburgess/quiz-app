@@ -14,15 +14,12 @@ image.mapster({
 	strokeColor: '00FF00',
 	strokeWidth: 1,
 	render_highlight: { 
-		strokeWidth: 1,
-		fillColor: '0000FF',
-		fillOpacity: 0.25,
+		fillColor: 'FFFFFF',
+		fillOpacity: 0.33,
     },
 });
 
 clickArea.mapster('set', true);
-
-
 
 //end jQuery 
 });
