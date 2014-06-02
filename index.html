@@ -21,25 +21,60 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <h1 class="heading">Jazz Masters Quiz</h1>
 
-        <img id="jazz-masters" src="img/a-great-day-in-harlem.jpg" alt="Art Kane's iconic image of Jazz Masters in 1958" usemap="#map">
+        <nav>
+            <a class="what" href="#">What?</a>
+        </nav>
 
-        <map name="map">
-            <area id="sullivan" shape="circle" coords="434, 530, 25" alt="maxine-sullivan" href="#" />
-            <area id="hjones" shape="circle" coords="218, 500, 25" alt="hank-jones" href="#" />
-            <area id="rollins" shape="circle" coords="826, 458, 25" alt="sonny-rollins" href="#" />
-            <area id="jjones" shape="circle" coords="490, 414, 25" alt="jo-jones" href="#" />
-            <area id="mingus" shape="circle" coords="691, 372, 25" alt="charles-mingus" href="#" />
-            <area id="silver" shape="circle" coords="322, 492, 25" alt="horace-silver" href="#" />
-            <area id="young" shape="circle" coords="1047, 485, 25" alt="lester-young" href="#" />
-            <area id="blakey" shape="circle" coords="603, 234, 25" alt="art-blakey" href="#" />
-            <area id="mcpartland" shape="circle" coords="818, 497, 25" alt="marian-mcpartland" href="#" />
-            <area id="basie" shape="circle" coords="984, 663, 25" alt="count-basie" href="#" />
-            <area id="mulligan" shape="circle" coords="1158, 466, 25" alt="gerry-mulligan" href="#" />
-            <area id="gillespie" shape="circle" coords="1213, 496, 25" alt="dizzy-gillespie" href="#" />
-            <area id="monk" shape="circle" coords="940, 487, 25" alt="thelonius-monk" href="#"/>   
-            <area id="hawkins" shape="circle" coords="672, 507, 25" alt="coleman-hawkins" href="#" />
-        </map>
+        <section id="quiz-results">
+            <p>You have answers 0 of 14 questions correctly</p>
+        </section>
+
+        <section id="question-box">
+            <img class="question-image" src="img/tmonk.jpg" alt="Thelonius Monk">
+            <div id="question-text">
+                <h3>Thelonius Monk</h3>
+                <a class="close-question" href="#">&#10006;</a>
+                <p>This composition, recorded over 1000 times, was written by Monk when he was just 19:</p>
+                <ol type="A">
+                    <li><a href="#">Caravan</a></li>
+                    <li><a href="#">Scrapple from the Apple</a></li>
+                    <li><a href="#">Round Midnight</a></li>
+                    <li><a href="#">Evidence</a></li>
+                </ol>
+            </div>
+            <p class="clearfix" id="link-wiki" target="_blank"><a href="http://en.wikipedia.org/wiki/Thelonious_Monk">Wikipedia</a></p>
+        </section>
+
+
+        <!-- Modal Info Box -->
+        <div class="overlay" id="modal">
+            <h3>Jazz Masters Quiz</h3>
+            <p>This is a quiz to test your knowledge of some of the jazz masters depicted in Art Kane's iconic photograph <a href="http://www.artkane.com" target="_blank">&quot;A Great Day in Harlem.&quot;</a></p>
+            <p>Click on a highlighted musician and answer the question that appears.  The application will automatically track your progress.</p>
+            <a class="close" href="#">Got It!</a>
+        </div>
+
+        <div id="image-main">
+            <img id="jazz-masters" src="img/a-great-day-in-harlem.jpg" alt="Art Kane's iconic image of Jazz Masters in 1958" usemap="#map">
+            <map name="map">
+                <area id="sullivan" shape="circle" coords="434, 530, 25" alt="maxine-sullivan" href="#" />
+                <area id="hjones" shape="circle" coords="218, 500, 25" alt="hank-jones" href="#" />
+                <area id="rollins" shape="circle" coords="826, 458, 25" alt="sonny-rollins" href="#" />
+                <area id="jjones" shape="circle" coords="490, 414, 25" alt="jo-jones" href="#" />
+                <area id="mingus" shape="circle" coords="691, 372, 25" alt="charles-mingus" href="#" />
+                <area id="silver" shape="circle" coords="322, 492, 25" alt="horace-silver" href="#" />
+                <area id="young" shape="circle" coords="1047, 485, 25" alt="lester-young" href="#" />
+                <area id="blakey" shape="circle" coords="603, 234, 25" alt="art-blakey" href="#" />
+                <area id="mcpartland" shape="circle" coords="818, 497, 25" alt="marian-mcpartland" href="#" />
+                <area id="basie" shape="circle" coords="984, 663, 25" alt="count-basie" href="#" />
+                <area id="mulligan" shape="circle" coords="1158, 466, 25" alt="gerry-mulligan" href="#" />
+                <area id="gillespie" shape="circle" coords="1213, 496, 25" alt="dizzy-gillespie" href="#" />
+                <area id="monk" shape="circle" coords="940, 487, 25" alt="thelonius-monk" href="#"/>   
+                <area id="hawkins" shape="circle" coords="672, 507, 25" alt="coleman-hawkins" href="#" />
+            </map>
+        </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>

@@ -1,4 +1,4 @@
-<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="1347" measuredH="957" mockupW="1287" mockupH="937">
+<mockup version="1.0" skin="wireframe" fontFace="Balsamiq Sans" measuredW="1347" measuredH="957" mockupW="1267" mockupH="893">
   <controls>
     <control controlID="24" controlTypeID="com.balsamiq.mockups::TextArea" x="80" y="64" w="416" h="554" measuredW="200" measuredH="140" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
@@ -12,9 +12,9 @@
             <text>Jazz%20Masters%20Quiz%0Ahttp%3A//quiz-app.com</text>
           </controlProperties>
         </control>
-        <control controlID="1" controlTypeID="com.balsamiq.mockups::Image" x="0" y="67" w="708" h="482" measuredW="600" measuredH="408" zOrder="1" locked="false" isInGroup="51">
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Image" x="0" y="67" w="708" h="482" measuredW="1280" measuredH="871" zOrder="1" locked="false" isInGroup="51">
           <controlProperties>
-            <src>./a-great-day-in-harlem.jpg</src>
+            <src>../img/a-great-day-in-harlem.jpg</src>
             <text/>
           </controlProperties>
         </control>
@@ -38,18 +38,17 @@
         <text>%3F</text>
       </controlProperties>
     </control>
-    <control controlID="56" controlTypeID="com.balsamiq.mockups::Tooltip" x="60" y="20" w="-1" h="-1" measuredW="92" measuredH="33" zOrder="3" locked="false" isInGroup="-1"/>
-    <control controlID="58" controlTypeID="com.balsamiq.mockups::Image" x="862" y="741" w="127" h="169" measuredW="77" measuredH="79" zOrder="5" locked="false" isInGroup="-1">
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Image" x="862" y="741" w="127" h="169" measuredW="77" measuredH="79" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
         <text/>
       </controlProperties>
     </control>
-    <control controlID="59" controlTypeID="com.balsamiq.mockups::TextArea" x="834" y="694" w="420" h="263" measuredW="200" measuredH="140" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::TextArea" x="834" y="694" w="420" h="263" measuredW="200" measuredH="140" zOrder="3" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Question%20Overlay</text>
       </controlProperties>
     </control>
-    <control controlID="60" controlTypeID="com.balsamiq.mockups::List" x="1067" y="742" w="140" h="168" measuredW="100" measuredH="126" zOrder="6" locked="false" isInGroup="-1">
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::List" x="1067" y="742" w="140" h="168" measuredW="100" measuredH="126" zOrder="5" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Dizzy%20Gillespie%0AZoot%20Sims%0ACount%20Basie</text>
       </controlProperties>
