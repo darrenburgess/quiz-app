@@ -122,10 +122,9 @@ body {
     width: 1300px;
     height: 925px;
     margin: 0.8em auto;
-    padding-top: 20px;
-    padding-left: 20px;
     font-family: 'Lato', Calibri, Arial, sans-serif;
     text-align: center;
+    /*background-color: white;*/
 }
 
 a {
@@ -182,6 +181,13 @@ h1 {
 /*---------------------------------------------------------------------------------
    Image Styles
 ---------------------------------------------------------------------------------*/
+
+#image-main {
+    width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 img {
     margin: 0 auto;
     border-radius: 10px;
@@ -229,6 +235,7 @@ section {
     width: 200px;
     top: 40px;
     right: 40px;
+    background: rgba(0, 0, 0, 0.80);
 }
 
 .close-question {
