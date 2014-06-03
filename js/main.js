@@ -21,6 +21,158 @@ image.mapster({
 
 clickArea.mapster('set', true);
 
+// JSON data object
+
+var collection = {
+    'sullivan' : { 
+    	headshot:'/img/sullivan.png', 
+    	name: 'Maxine Sullivan', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Maxine_Sullivan',
+		question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'hjones' : { 
+    	headshot:'/img/hjones.png', 
+    	name: 'Hank Jones', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Hank_Jones',
+		question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'rollins' : { 
+    	headshot:'/img/rollins.png', 
+    	name: 'Sonny Rollins', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Sonny_Rollins',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'jjones' : { 
+    	headshot:'/img/jjones.png', 
+    	name: 'Philly Joe Jones', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Philly_Joe_Jones',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'mingus' : { 
+    	headshot:'/img/mingus.png', 
+    	name: 'Charles Mingus', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Charles_Mingus',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'silver' : { 
+    	headshot:'/img/silver.png', 
+    	name: 'Horace Silver', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Horace_Silver',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'young' : { 
+    	headshot:'/img/young.png', 
+    	name: 'Lester Young', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Lester_Young',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'blakey' : { 
+    	headshot:'/img/blakey.png', 
+    	name: 'Art Blakey', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Art_Blakey',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'mcpartland' : { 
+    	headshot:'/img/mcpartland.png', 
+    	name: 'Marian McPartland', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Marian_McPartland',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'basie' : { 
+    	headshot:'/img/basie.png', 
+    	name: 'Count Basie', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Count_Basie',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'mulligan' : { 
+    	headshot:'/img/mulligan.png', 
+    	name: 'Gerry Mulligan', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Gerry_Mulligan',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'gillespie' : { 
+    	headshot:'/img/gillespie.png', 
+    	name: 'Dizzy Gillespie', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Dizzy_Gillespie',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' },
+    'monk' : { 
+    	headshot:'/img/monk.png', 
+    	name: 'Thelonius Monk', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Thelonius_Monk',
+		question: 'This composition, recorded over 1000 times, was written by Monk when he was just 19:',
+		answerA: 'Caravan',
+		answerB: 'Scrapple from the Apple',
+		answerC: '\'Round Midnight',
+		answerD: 'Evidence',
+		answerCorrect: 'C' },
+    'hawkins' : { 
+    	headshot:'/img/hawkins.png', 
+    	name: 'Coleman Hawkins', 
+    	wikiLink:'http://en.wikipedia.org/wiki/Coleman_Hawkins',
+    	question: '',
+		answerA: '',
+		answerB: '',
+		answerC: '',
+		answerD: '',
+		answerCorrect: '' }
+	};
+
+// this will access the data, somehow
+// $('button').bind('click', function(e){
+//     var data = collection[$(this).attr('id')];
+//     $('#ok').html(data.name);
+//     $('#ok').append('<br>' + data.headshot);
+// });
+
 //end jQuery 
 });
 
