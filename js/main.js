@@ -10,6 +10,10 @@ var overlayInfo = $('.overlay');
 var closeQuestion = $('.close-question');
 var questionBox = $('#question-box');
 
+var jsAbort = function javascript_abort() {
+   throw new Error('Javascript aborted via function');
+}
+
 ////////////////////////////////
 // General behaviors          //
 ////////////////////////////////
@@ -22,11 +26,13 @@ whatButton.click(function(){
 // Dismiss What information overlay
 $('a.close').click(function(){
 	overlayInfo.fadeOut(1000);
+	jsAbort();
 });
 
 $(document).keyup(function(e){
 	if(e.which === 27){ // esc key pressed
 		overlayInfo.fadeOut(1000);
+		jsAbort();
 	}
 });
 
@@ -35,6 +41,7 @@ closeQuestion.click(function(){
 	questionBox.fadeOut(1000);
 });
 
+// // Dismiss question on escape - this should not run if dismissing What modal
 $(document).keyup(function(e){
 	if(e.which === 27){
 		questionBox.fadeOut(1000);
