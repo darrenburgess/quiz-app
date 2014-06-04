@@ -14,3 +14,6 @@ https://developer.cdn.mozilla.net/media/uploads/demos/s/u/summerstyle/365ccfd644
 
 Responsive image maps
 https://github.com/stowball/jQuery-rwdImageMaps
+
+Uses questions in object:
+http://elreyatee.github.io/Quiz_App/

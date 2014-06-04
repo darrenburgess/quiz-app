@@ -1,9 +1,54 @@
 (function($){
 $(document).ready(function() {
 
-var image = $('#jazz-masters');
+// stored variables	
 
+var image = $('#jazz-masters');
 var clickArea = $('area');
+var whatButton = $('.what');
+var overlayInfo = $('.overlay');
+var closeQuestion = $('.close-question');
+var questionBox = $('#question-box');
+
+////////////////////////////////
+// General behaviors          //
+////////////////////////////////
+
+// Display What information overlay
+whatButton.click(function(){
+	overlayInfo.fadeIn(1000);
+});
+
+// Dismiss What information overlay
+$('a.close').click(function(){
+	overlayInfo.fadeOut(1000);
+});
+
+$(document).keyup(function(e){
+	if(e.which === 27){ // esc key pressed
+		overlayInfo.fadeOut(1000);
+	}
+});
+
+// Dismiss question popover
+closeQuestion.click(function(){
+	questionBox.fadeOut(1000);
+});
+
+$(document).keyup(function(e){
+	if(e.which === 27){
+		questionBox.fadeOut(1000);
+	}
+});
+
+
+
+
+////////////////////////////////
+// Image map behavior         //
+////////////////////////////////
+
+// Render all of the circles
 
 image.mapster({
 	set: true,
@@ -21,7 +66,10 @@ image.mapster({
 
 clickArea.mapster('set', true);
 
-// JSON data object
+
+////////////////////////////////
+// JSON data object           //
+////////////////////////////////
 
 var collection = {
     'sullivan' : { 
