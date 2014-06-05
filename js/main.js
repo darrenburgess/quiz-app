@@ -1,7 +1,9 @@
 (function($){
 $(document).ready(function() {
 
-// cached variables	
+////////////////////////////////
+// Cached Variables           //
+////////////////////////////////
 
 var image = $('#jazz-masters');
 var clickArea = $('area');
@@ -18,10 +20,8 @@ var answerA = $('#answer-a');
 var answerB = $('#answer-b');
 var answerC = $('#answer-c');
 var answerD = $('#answer-d');
+var linkWiki = $('#link-wiki');
 
-var jsAbort = function javascript_abort() {
-   throw new Error('Javascript aborted via function');
-};
 
 ////////////////////////////////
 // General behaviors          //
@@ -31,6 +31,11 @@ var jsAbort = function javascript_abort() {
 whatButton.click(function(){
 	overlayInfo.fadeIn(1000);
 });
+
+// abort prevents dismissal of all popovers
+var jsAbort = function javascript_abort() {
+   throw new Error('Javascript aborted via function');
+};
 
 // Dismiss What information overlay
 $('a.close').click(function(){
@@ -50,14 +55,28 @@ closeQuestion.click(function(){
 	questionBox.fadeOut(1000);
 });
 
-// // Dismiss question on escape - this should not run if dismissing What modal
+// Dismiss question on escape - this should not run if dismissing What modal - this is not quite working
 $(document).keyup(function(e){
 	if(e.which === 27){
 		questionBox.fadeOut(1000);
 	}
 });
 
+////////////////////////////////
+// Quiz behavior              //
+////////////////////////////////
 
+// On click of answer evaluate correctness of answer
+
+// Display explanation panel for question after answering
+
+// Modify highlight of area after answering
+
+// Prevent answering question again after answering
+
+// Update quiz result
+
+// Start new quiz
 
 
 ////////////////////////////////
@@ -77,9 +96,8 @@ image.mapster({
 		fillColor: 'FFFFFF',
 		fillOpacity: 0.33,
     },
-    onClick: function (e){
+    onClick: function (){
     	var data = collection[$(this).attr('id')];
-    	console.log(data);
     	questionBox.fadeIn(1000);
     	musicianName.html(data.name);
     	musicianImage.attr("src", data.headshot);
@@ -88,20 +106,13 @@ image.mapster({
     	answerB.html(data.answerB);
     	answerC.html(data.answerC);
     	answerD.html(data.answerD);
+    	console.log(data.wikiLink);
+    	linkWiki.attr("href", data.wikiLink);
+    	this.mapster({selected: true,});
     },
 });
 
 clickArea.mapster('set', true);
-
-// this will access the data, somehow
-// $('button').bind('click', function(e){
-//     var data = collection[$(this).attr('id')];
-//     $('#ok').html(data.name);
-//     $('#ok').append('<br>' + data.headshot);
-// });
-
-
-
 
 ////////////////////////////////
 // JSON data object           //
@@ -109,7 +120,7 @@ clickArea.mapster('set', true);
 
 var collection = {
     'sullivan' : { 
-    	headshot:'/img/sullivan.png', 
+    	headshot:'img/sullivan.jpg', 
     	name: 'Maxine Sullivan', 
     	wikiLink:'http://en.wikipedia.org/wiki/Maxine_Sullivan',
 		question: '',
@@ -119,7 +130,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'hjones' : { 
-    	headshot:'/img/hjones.png', 
+    	headshot:'img/hjones.jpg', 
     	name: 'Hank Jones', 
     	wikiLink:'http://en.wikipedia.org/wiki/Hank_Jones',
 		question: '',
@@ -129,7 +140,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'rollins' : { 
-    	headshot:'/img/rollins.png', 
+    	headshot:'img/rollins.jpg', 
     	name: 'Sonny Rollins', 
     	wikiLink:'http://en.wikipedia.org/wiki/Sonny_Rollins',
     	question: '',
@@ -139,7 +150,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'jjones' : { 
-    	headshot:'/img/jjones.png', 
+    	headshot:'img/jjones.jpg', 
     	name: 'Philly Joe Jones', 
     	wikiLink:'http://en.wikipedia.org/wiki/Philly_Joe_Jones',
     	question: '',
@@ -149,7 +160,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'mingus' : { 
-    	headshot:'/img/mingus.png', 
+    	headshot:'img/mingus.jpg', 
     	name: 'Charles Mingus', 
     	wikiLink:'http://en.wikipedia.org/wiki/Charles_Mingus',
     	question: '',
@@ -159,7 +170,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'silver' : { 
-    	headshot:'/img/silver.png', 
+    	headshot:'img/silver.jpg', 
     	name: 'Horace Silver', 
     	wikiLink:'http://en.wikipedia.org/wiki/Horace_Silver',
     	question: '',
@@ -169,7 +180,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'young' : { 
-    	headshot:'/img/young.png', 
+    	headshot:'img/young.jpg', 
     	name: 'Lester Young', 
     	wikiLink:'http://en.wikipedia.org/wiki/Lester_Young',
     	question: '',
@@ -179,17 +190,17 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'blakey' : { 
-    	headshot:'/img/blakey.png', 
+    	headshot:'img/blakey.jpg', 
     	name: 'Art Blakey', 
     	wikiLink:'http://en.wikipedia.org/wiki/Art_Blakey',
-    	question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '' },
+    	question: 'Blakey was well known for hiring many young jazz musicians that later became famous.  The name of his band was: ',
+		answerA: 'The Jazz Train',
+		answerB: 'Art Blakey plus Five',
+		answerC: 'The Jazz Messengers',
+		answerD: 'Art Blakey\'s Orchestra',
+		answerCorrect: 'C' },
     'mcpartland' : { 
-    	headshot:'/img/mcpartland.png', 
+    	headshot:'img/mcpartland.jpg', 
     	name: 'Marian McPartland', 
     	wikiLink:'http://en.wikipedia.org/wiki/Marian_McPartland',
     	question: '',
@@ -199,7 +210,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'basie' : { 
-    	headshot:'/img/basie.png', 
+    	headshot:'img/basie.jpg', 
     	name: 'Count Basie', 
     	wikiLink:'http://en.wikipedia.org/wiki/Count_Basie',
     	question: '',
@@ -209,7 +220,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'mulligan' : { 
-    	headshot:'/img/mulligan.png', 
+    	headshot:'img/mulligan.jpg', 
     	name: 'Gerry Mulligan', 
     	wikiLink:'http://en.wikipedia.org/wiki/Gerry_Mulligan',
     	question: '',
@@ -219,7 +230,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'gillespie' : { 
-    	headshot:'/img/gillespie.png', 
+    	headshot:'img/gillespie.jpg', 
     	name: 'Dizzy Gillespie', 
     	wikiLink:'http://en.wikipedia.org/wiki/Dizzy_Gillespie',
     	question: '',
@@ -239,7 +250,7 @@ var collection = {
 		answerD: 'Evidence',
 		answerCorrect: 'C' },
     'hawkins' : { 
-    	headshot:'/img/hawkins.png', 
+    	headshot:'img/hawkins.jpg', 
     	name: 'Coleman Hawkins', 
     	wikiLink:'http://en.wikipedia.org/wiki/Coleman_Hawkins',
     	question: '',
@@ -249,7 +260,6 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' }
 	};
-
 
 
 //end jQuery 
