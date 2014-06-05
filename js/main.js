@@ -229,7 +229,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'monk' : { 
-    	headshot:'../img/monk.jpg', 
+    	headshot:'img/monk.jpg', 
     	name: 'Thelonius Monk', 
     	wikiLink:'http://en.wikipedia.org/wiki/Thelonius_Monk',
 		question: 'This composition, recorded over 1000 times, was written by Monk when he was just 19:',
