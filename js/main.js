@@ -1,18 +1,27 @@
 (function($){
 $(document).ready(function() {
 
-// stored variables	
+// cached variables	
 
 var image = $('#jazz-masters');
 var clickArea = $('area');
 var whatButton = $('.what');
 var overlayInfo = $('.overlay');
+
+// question box
 var closeQuestion = $('.close-question');
 var questionBox = $('#question-box');
+var musicianName = $('#musician-name');
+var questionText = $('#question-text');
+var musicianImage = $('#musician-image');
+var answerA = $('#answer-a');
+var answerB = $('#answer-b');
+var answerC = $('#answer-c');
+var answerD = $('#answer-d');
 
 var jsAbort = function javascript_abort() {
    throw new Error('Javascript aborted via function');
-}
+};
 
 ////////////////////////////////
 // General behaviors          //
@@ -56,7 +65,6 @@ $(document).keyup(function(e){
 ////////////////////////////////
 
 // Render all of the circles
-
 image.mapster({
 	set: true,
 	fill: true, 
@@ -69,9 +77,30 @@ image.mapster({
 		fillColor: 'FFFFFF',
 		fillOpacity: 0.33,
     },
+    onClick: function (e){
+    	var data = collection[$(this).attr('id')];
+    	console.log(data);
+    	questionBox.fadeIn(1000);
+    	musicianName.html(data.name);
+    	musicianImage.attr("src", data.headshot);
+    	questionText.html(data.question);
+    	answerA.html(data.answerA);
+    	answerB.html(data.answerB);
+    	answerC.html(data.answerC);
+    	answerD.html(data.answerD);
+    },
 });
 
 clickArea.mapster('set', true);
+
+// this will access the data, somehow
+// $('button').bind('click', function(e){
+//     var data = collection[$(this).attr('id')];
+//     $('#ok').html(data.name);
+//     $('#ok').append('<br>' + data.headshot);
+// });
+
+
 
 
 ////////////////////////////////
@@ -200,7 +229,7 @@ var collection = {
 		answerD: '',
 		answerCorrect: '' },
     'monk' : { 
-    	headshot:'/img/monk.png', 
+    	headshot:'/img/monk.jpg', 
     	name: 'Thelonius Monk', 
     	wikiLink:'http://en.wikipedia.org/wiki/Thelonius_Monk',
 		question: 'This composition, recorded over 1000 times, was written by Monk when he was just 19:',
@@ -221,12 +250,7 @@ var collection = {
 		answerCorrect: '' }
 	};
 
-// this will access the data, somehow
-// $('button').bind('click', function(e){
-//     var data = collection[$(this).attr('id')];
-//     $('#ok').html(data.name);
-//     $('#ok').append('<br>' + data.headshot);
-// });
+
 
 //end jQuery 
 });
