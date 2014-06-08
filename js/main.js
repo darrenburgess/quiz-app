@@ -9,6 +9,7 @@ var image = $('#jazz-masters');
 var clickArea = $('area');
 var whatButton = $('.what');
 var overlayInfo = $('.overlay');
+var data;
 
 // question box
 var closeQuestion = $('.close-question');
@@ -16,12 +17,18 @@ var questionBox = $('#question-box');
 var musicianName = $('#musician-name');
 var questionText = $('#question-text');
 var musicianImage = $('#musician-image');
+var question = $('.question');
+var answer = $('.answer');
 var answerA = $('#answer-a');
 var answerB = $('#answer-b');
 var answerC = $('#answer-c');
 var answerD = $('#answer-d');
+var answered;
 var linkWiki = $('#link-wiki');
 var correctAnswer;
+var numberCorrect;
+var numberCorrectJQ = $('#number-correct');
+var correctResult = $('#correct-result');
 
 
 ////////////////////////////////
@@ -67,6 +74,28 @@ $(document).keyup(function(e){
 // Image map behavior         //
 ////////////////////////////////
 
+var renderQuestionBox = function(){
+	questionBox.fadeIn(1000);
+	musicianName.html(data.name);
+	musicianImage.attr("src", data.headshot);
+	questionText.html(data.question);
+	answerA.html(data.answerA);
+	answerB.html(data.answerB);
+	answerC.html(data.answerC);
+	answerD.html(data.answerD);
+	correctAnswer = data.answerCorrect;
+	linkWiki.attr("href", data.wikiLink);
+	answered = data.answered;
+	console.log(answered);
+	if(answered === false){
+		correctResult.hide();
+	} else {
+		evaluateAnswer(answered, correctAnswer);
+	}
+	jsAbort();
+	// this.mapster({selected: true,}); // throws undefined error
+};
+
 // Render all of the circles
 image.mapster({
 	set: true,
@@ -81,18 +110,12 @@ image.mapster({
 		fillOpacity: 0.33,
     },
     onClick: function (){
-    	var data = collection[$(this).attr('id')];
-    	questionBox.fadeIn(1000);
-    	musicianName.html(data.name);
-    	musicianImage.attr("src", data.headshot);
-    	questionText.html(data.question);
-    	answerA.html(data.answerA);
-    	answerB.html(data.answerB);
-    	answerC.html(data.answerC);
-    	answerD.html(data.answerD);
-    	correctAnswer = data.answerCorrect;
-    	linkWiki.attr("href", data.wikiLink);
-    	this.mapster({selected: true,}); // throws undefined error
+    	data = collection[$(this).attr('id')];
+    	if (data.answered === false){
+    		renderQuestionBox();
+	    } else {
+    		renderQuestionBox();
+    	}
     },
 });
 
@@ -102,32 +125,28 @@ clickArea.mapster('set', true);
 // Quiz behavior              //
 ////////////////////////////////
 
-// On click of answer evaluate correctness of answer
-$('.answer').click(function(e){
-	var selectedAnswer = e.target.id.slice(-1);
-	var numberCorrectJQ = $('#number-correct');
-	var numberCorrect = parseInt(numberCorrectJQ.text());
-	console.log(numberCorrect);
-	if(selectedAnswer === correctAnswer){
-		numberCorrectJQ.text(++numberCorrect);
-	} else {
-		// incorrect answer
+var evaluateAnswer = function(answer, correctAnswer){
+	console.log("test:" + answer, correctAnswer);
+	if(answer.toUpperCase() === correctAnswer.toUpperCase()){
+			numberCorrectJQ.text(++numberCorrect);
+			correctResult.show().text("Correct! You answered " + answer.toUpperCase() + ".");
+		} else {
+			correctResult.show().text("Incorrect! The correct answer is " + correctAnswer.toUpperCase() + ".");
 	}
-});
-
-// Increment answer result
-
-var incrementAnswer = function(){
-
 };
 
+// On click of answer evaluate correctness of answer
+answer.click(function(e){
+	if(data.answered === false){
+		var selectedAnswer = e.target.id.slice(-1);
+		var numberCorrect = parseInt(numberCorrectJQ.text());
+		evaluateAnswer(selectedAnswer, correctAnswer);
+		data.answered = selectedAnswer;
+	}
+	// change highlight of image map area
+});
+
 // Prevent answering question again after answering
-
-// Display explanation panel for question after answering
-
-// Modify highlight of area after answering
-
-// Update quiz result
 
 // Start new quiz
 
@@ -145,7 +164,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' },
+		answerCorrect: '',
+		answered: false },
     'hjones' : { 
     	headshot:'img/hjones.jpg', 
     	name: 'Hank Jones', 
@@ -155,7 +175,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' },
+		answerCorrect: '',
+		answered: false },
     'rollins' : { 
     	headshot:'img/rollins.jpg', 
     	name: 'Sonny Rollins', 
@@ -165,7 +186,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' },
+		answerCorrect: '',
+		answered: false },
     'jjones' : { 
     	headshot:'img/jjones.jpg', 
     	name: 'Philly Joe Jones', 
@@ -175,7 +197,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' },
+		answerCorrect: '',
+		answered: false },
     'mingus' : { 
     	headshot:'img/mingus.jpg', 
     	name: 'Charles Mingus', 
@@ -185,7 +208,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' },
+		answerCorrect: '',
+		answered: false },
     'silver' : { 
     	headshot:'img/silver.jpg', 
     	name: 'Horace Silver', 
@@ -195,7 +219,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' },
+		answerCorrect: '',
+		answered: false },
     'young' : { 
     	headshot:'img/young.jpg', 
     	name: 'Lester Young', 
@@ -205,7 +230,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' },
+		answerCorrect: '',
+		answered: false },
     'blakey' : { 
     	headshot:'img/blakey.jpg', 
     	name: 'Art Blakey', 
@@ -215,7 +241,8 @@ var collection = {
 		answerB: 'Art Blakey plus Five',
 		answerC: 'The Jazz Messengers',
 		answerD: 'Art Blakey\'s Orchestra',
-		answerCorrect: 'c' },
+		answerCorrect: 'c',
+		answered: false },
     'mcpartland' : { 
     	headshot:'img/mcpartland.jpg', 
     	name: 'Marian McPartland', 
@@ -225,7 +252,8 @@ var collection = {
 		answerB: 'Piano Weekly with Marian',
 		answerC: 'Playing with Marian McPartland',
 		answerD: 'Marian McPartland\'s Piano Jazz',
-		answerCorrect: 'd' },
+		answerCorrect: 'd',
+		answered: false },
     'basie' : { 
     	headshot:'img/basie.jpg', 
     	name: 'Count Basie', 
@@ -235,7 +263,8 @@ var collection = {
 		answerB: 'Swing',
 		answerC: 'Dixieland',
 		answerD: 'Hard bop',
-		answerCorrect: 'b' },
+		answerCorrect: 'b',
+		answered: false },
     'mulligan' : { 
     	headshot:'img/mulligan.jpg', 
     	name: 'Gerry Mulligan', 
@@ -245,7 +274,8 @@ var collection = {
 		answerB: 'Mulligan plays Mulligan',
 		answerC: 'Mainstream of Jazz',
 		answerD: 'Sketches of Spain',
-		answerCorrect: 'a' },
+		answerCorrect: 'a',
+		answered: false },
     'gillespie' : { 
     	headshot:'img/gillespie.jpg', 
     	name: 'Dizzy Gillespie', 
@@ -255,7 +285,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' },
+		answerCorrect: '',
+		answered: false },
     'monk' : { 
     	headshot:'img/monk.jpg', 
     	name: 'Thelonius Monk', 
@@ -265,7 +296,8 @@ var collection = {
 		answerB: 'Scrapple from the Apple',
 		answerC: '\'Round Midnight',
 		answerD: 'Evidence',
-		answerCorrect: 'c' },
+		answerCorrect: 'c',
+		answered: false },
     'hawkins' : { 
     	headshot:'img/hawkins.jpg', 
     	name: 'Coleman Hawkins', 
@@ -275,7 +307,8 @@ var collection = {
 		answerB: '',
 		answerC: '',
 		answerD: '',
-		answerCorrect: '' }
+		answerCorrect: '',
+		answered: false }
 	};
 
 

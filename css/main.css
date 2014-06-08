@@ -278,6 +278,11 @@ ol>li:hover {
     bottom: 0;
 }
 
+#correct-result {
+    color: tomato;
+    font-size: 1.2em;
+}
+
 
 /* ==========================================================================
    Helper classes
