@@ -162,26 +162,26 @@ h1 {
 /*---------------------------------------------------------------------------------
    Overlay Styles
 ---------------------------------------------------------------------------------*/
-.overlay {
-    width: 50%;
-    height: 30%;
-    text-align: center;
-    color: #fff;
-    background: #000000;
-    position: absolute;
-    border-radius: 10px;
-    opacity: 0.8;
-    top: 30%;
-    left: 30%;
-    margin: 0;
-    z-index: 1000;
+
+
+.overlay, .question-area {
     display: none;
-    vertical-align: middle;
+}
+
+.overlay {
+    text-align: center;
 }
 
 .overlay h3 {
     font-size: 2em;
 }
+
+.overlay > p {
+    margin: 0 auto 10px;
+    width: 65%;
+    font-size: 1.2em;
+}
+
 
 /*---------------------------------------------------------------------------------
    Image Styles

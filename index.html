@@ -32,29 +32,30 @@
         </section>
 
         <section id="question-box">
-            <img id="musician-image" src="" alt="Thelonius Monk">
-            <div id="question-answers">
-                <h3 id="musician-name"></h3>
+            <div class="overlay">
                 <a class="close-question" href="#">&#10006;</a>
-                <p id="question-text" class="question"></p>
-                <ol type="A">
-                    <li class="answer" id="answer-a"><a href="#"></a></li>
-                    <li class="answer" id="answer-b"><a href="#"></a></li>
-                    <li class="answer" id="answer-c"><a href="#"></a></li>
-                    <li class="answer" id="answer-d"><a href="#"></a></li>
-                </ol>
-                <p id="correct-result"></p>
+                <h3>Jazz Masters Quiz</h3>
+                <p>This is a quiz to test your knowledge of some of the jazz masters depicted in Art Kane's iconic photograph 
+                    <a href="http://www.artkane.com" target="_blank">&quot;A Great Day in Harlem.&quot;</a></p>
+                <p>Click on a highlighted musician and answer the question that appears.  The application will automatically track your progress.</p>
             </div>
-            <p id="wiki-link"><a id="link-wiki" href="#" target="_blank">Wikipedia</a></p>
+            <div class="question-area">
+                <img id="musician-image" src="" alt="Jazz Master">
+                <div id="question-answers">
+                    <h3 id="musician-name"></h3>
+                    <a class="close-question" href="#">&#10006;</a>
+                    <p id="question-text" class="question"></p>
+                    <ol type="A">
+                        <li class="answer" id="answer-a"><a href="#"></a></li>
+                        <li class="answer" id="answer-b"><a href="#"></a></li>
+                        <li class="answer" id="answer-c"><a href="#"></a></li>
+                        <li class="answer" id="answer-d"><a href="#"></a></li>
+                    </ol>
+                    <p id="correct-result"></p>
+                </div>
+                <p id="wiki-link"><a id="link-wiki" href="#" target="_blank">Wikipedia</a></p>
+            </div>
         </section>
-
-        <!-- Modal Info Box -->
-        <div class="overlay" id="modal">
-            <h3>Jazz Masters Quiz</h3>
-            <p>This is a quiz to test your knowledge of some of the jazz masters depicted in Art Kane's iconic photograph <a href="http://www.artkane.com" target="_blank">&quot;A Great Day in Harlem.&quot;</a></p>
-            <p>Click on a highlighted musician and answer the question that appears.  The application will automatically track your progress.</p>
-            <a class="close" href="#">Got It!</a>
-        </div>
 
         <div id="image-main">
             <img id="jazz-masters" src="img/a-great-day-in-harlem.jpg" alt="Art Kane's iconic image of Jazz Masters in 1958" usemap="#map">
@@ -75,8 +76,7 @@
             </map>
         </div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
         <script src="js/jquery.imagemapster.js"></script>

@@ -5,19 +5,20 @@ $(document).ready(function() {
 // Cached Variables           //
 ////////////////////////////////
 
+// general
 var image = $('#jazz-masters');
 var clickArea = $('area');
 var whatButton = $('.what');
 var overlayInfo = $('.overlay');
 var data;
 
-// question box
+// question popover
 var closeQuestion = $('.close-question');
 var questionBox = $('#question-box');
+var questionArea = $('.question-area');
 var musicianName = $('#musician-name');
 var questionText = $('#question-text');
 var musicianImage = $('#musician-image');
-var question = $('.question');
 var answer = $('.answer');
 var answerA = $('#answer-a');
 var answerB = $('#answer-b');
@@ -25,6 +26,8 @@ var answerC = $('#answer-c');
 var answerD = $('#answer-d');
 var answered;
 var linkWiki = $('#link-wiki');
+
+// result box
 var correctAnswer;
 var numberCorrect;
 var numberCorrectJQ = $('#number-correct');
@@ -39,36 +42,27 @@ var correctResult = $('#correct-result');
 
 // Display What information overlay
 whatButton.click(function(){
-	overlayInfo.fadeIn(1000);
+	questionBox.fadeIn(1000);
+	overlayInfo.show();
 });
 
-// abort prevents dismissal of all popovers
-// var jsAbort = function javascript_abort() {
-//    throw new Error('Javascript aborted via function');
-// };
-
-// Dismiss What information overlay
-$('a.close').click(function(){
-	overlayInfo.fadeOut(1000);
-});
-
-$(document).keyup(function(e){
-	if(e.which === 27){ // esc key pressed
-		overlayInfo.fadeOut(1000);
-	}
-});
-
-// Dismiss question popover
-closeQuestion.click(function(){
+// dismiss popover
+var closeRoutine = function(){
 	questionBox.fadeOut(1000);
-});
+	overlayInfo.fadeOut(1000);
+	questionArea.fadeOut(1000);
+};
 
-// Dismiss question on escape - this should not run if dismissing What modal - this is not quite working
 $(document).keyup(function(e){
 	if(e.which === 27){
-		questionBox.fadeOut(1000);
+		closeRoutine();
 	}
 });
+
+closeQuestion.click(function(){
+	closeRoutine();
+});
+
 
 ////////////////////////////////
 // Image map behavior         //
@@ -76,6 +70,7 @@ $(document).keyup(function(e){
 
 var renderQuestionBox = function(){
 	questionBox.fadeIn(1000);
+	questionArea.show();
 	musicianName.html(data.name);
 	musicianImage.attr("src", data.headshot);
 	questionText.html(data.question);
