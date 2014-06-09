@@ -28,6 +28,8 @@ var linkWiki = $('#link-wiki');
 var correctAnswer;
 var numberCorrect;
 var numberCorrectJQ = $('#number-correct');
+var numberAnswered;
+var numberAnsweredJQ = $('#number-answered');
 var correctResult = $('#correct-result');
 
 
@@ -41,20 +43,18 @@ whatButton.click(function(){
 });
 
 // abort prevents dismissal of all popovers
-var jsAbort = function javascript_abort() {
-   throw new Error('Javascript aborted via function');
-};
+// var jsAbort = function javascript_abort() {
+//    throw new Error('Javascript aborted via function');
+// };
 
 // Dismiss What information overlay
 $('a.close').click(function(){
 	overlayInfo.fadeOut(1000);
-	jsAbort();
 });
 
 $(document).keyup(function(e){
 	if(e.which === 27){ // esc key pressed
 		overlayInfo.fadeOut(1000);
-		jsAbort();
 	}
 });
 
@@ -86,36 +86,30 @@ var renderQuestionBox = function(){
 	correctAnswer = data.answerCorrect;
 	linkWiki.attr("href", data.wikiLink);
 	answered = data.answered;
-	console.log(answered);
 	if(answered === false){
 		correctResult.hide();
 	} else {
 		evaluateAnswer(answered, correctAnswer);
 	}
-	jsAbort();
-	// this.mapster({selected: true,}); // throws undefined error
 };
 
-// Render all of the circles
+// bind the image and image map to image mapster library
 image.mapster({
+	singleSelect: false,
 	set: true,
 	fill: true, 
-	fillColor: '000000',
 	fillOpacity: 0.0,
 	stroke: true,
 	strokeColor: '00FF00',
 	strokeWidth: 1,
+	staticState: true,
 	render_highlight: { 
 		fillColor: 'FFFFFF',
-		fillOpacity: 0.33,
+		fillOpacity: 0.25,
     },
     onClick: function (){
     	data = collection[$(this).attr('id')];
-    	if (data.answered === false){
-    		renderQuestionBox();
-	    } else {
-    		renderQuestionBox();
-    	}
+    	renderQuestionBox();
     },
 });
 
@@ -125,112 +119,99 @@ clickArea.mapster('set', true);
 // Quiz behavior              //
 ////////////////////////////////
 
+// evaluate correctness of answer and display result
 var evaluateAnswer = function(answer, correctAnswer){
-	console.log("test:" + answer, correctAnswer);
 	if(answer.toUpperCase() === correctAnswer.toUpperCase()){
 			numberCorrectJQ.text(++numberCorrect);
 			correctResult.show().text("Correct! You answered " + answer.toUpperCase() + ".");
 		} else {
 			correctResult.show().text("Incorrect! The correct answer is " + correctAnswer.toUpperCase() + ".");
-	}
+		}
+	numberAnsweredJQ.text(++numberAnswered);
 };
 
-// On click of answer evaluate correctness of answer
+// On click of answer
 answer.click(function(e){
 	if(data.answered === false){
 		var selectedAnswer = e.target.id.slice(-1);
-		var numberCorrect = parseInt(numberCorrectJQ.text());
+		numberCorrect = parseInt(numberCorrectJQ.text());
+		numberAnswered = parseInt(numberAnsweredJQ.text());
 		evaluateAnswer(selectedAnswer, correctAnswer);
 		data.answered = selectedAnswer;
+		$('blakey').mapster();
 	}
-	// change highlight of image map area
 });
 
-// Prevent answering question again after answering
-
-// Start new quiz
 
 ////////////////////////////////
 // JSON data object           //
 ////////////////////////////////
 
 var collection = {
-    'sullivan' : { 
-    	headshot:'img/sullivan.jpg', 
-    	name: 'Maxine Sullivan', 
-    	wikiLink:'http://en.wikipedia.org/wiki/Maxine_Sullivan',
-		question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
-		answered: false },
     'hjones' : { 
     	headshot:'img/hjones.jpg', 
     	name: 'Hank Jones', 
     	wikiLink:'http://en.wikipedia.org/wiki/Hank_Jones',
-		question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
+		question: 'During the late 40\'s and early 50\'s, Jones was the primary accompanist for this famous singer:',
+		answerA: 'Ella Fitzgerald',
+		answerB: 'Billy Holiday',
+		answerC: 'Frank Sinatra',
+		answerD: 'Sarah Vaughn',
+		answerCorrect: 'a',
 		answered: false },
     'rollins' : { 
     	headshot:'img/rollins.jpg', 
     	name: 'Sonny Rollins', 
-    	wikiLink:'http://en.wikipedia.org/wiki/Sonny_Rollins',
-    	question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
+    	wikiLink:'Rollins is well known for practicing long hours on this New York City bridge:',
+		answerA: 'George Washington Bridge',
+		answerB: 'Brooklyn Bridge',
+		answerC: 'Williamsburg Bridge',
+		answerD: 'Queensboro Bridge',
+		answerCorrect: 'c',
 		answered: false },
     'jjones' : { 
     	headshot:'img/jjones.jpg', 
     	name: 'Philly Joe Jones', 
     	wikiLink:'http://en.wikipedia.org/wiki/Philly_Joe_Jones',
-    	question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
+    	question: 'Jones worked and recorded with this musician in the mid to late 50\'s in a band that became known as "The Quintet":',
+		answerA: 'John Coltrane',
+		answerB: 'Bill Evans',
+		answerC: 'Chet Baker',
+		answerD: 'Miles Davis',
+		answerCorrect: 'd',
 		answered: false },
     'mingus' : { 
     	headshot:'img/mingus.jpg', 
     	name: 'Charles Mingus', 
     	wikiLink:'http://en.wikipedia.org/wiki/Charles_Mingus',
-    	question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
+    	question: 'Mingus composed and recorded this jazz standard in 1959 as an elegy for the saxaphonist Lester Young:',
+		answerA: 'Pithecanthropus Erectus',
+		answerB: 'Mood Indigo',
+		answerC: 'Goodbye Pork Pie Hat',
+		answerD: 'Reincarnation of a Lovebird',
+		answerCorrect: 'c',
 		answered: false },
     'silver' : { 
     	headshot:'img/silver.jpg', 
     	name: 'Horace Silver', 
     	wikiLink:'http://en.wikipedia.org/wiki/Horace_Silver',
-    	question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
+    	question: 'Silver\'s extensive recordings for this record label were highly influential in the formation of the "hard bop" jazz genre:',
+		answerA: 'Atlantic',
+		answerB: 'Verve',
+		answerC: 'Blue Note',
+		answerD: 'Riverside',
+		answerCorrect: 'c',
 		answered: false },
     'young' : { 
     	headshot:'img/young.jpg', 
     	name: 'Lester Young', 
     	wikiLink:'http://en.wikipedia.org/wiki/Lester_Young',
-    	question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
+    	question: 'Young spent a significant part of his early career with this big band orchestra:',
+		answerA: 'Count Basie',
+		answerB: 'Benny Goodman',
+		answerC: 'Duke Ellington',
+		answerD: 'Glenn Miller',
+		answerCorrect: 'a',
 		answered: false },
     'blakey' : { 
     	headshot:'img/blakey.jpg', 
@@ -280,12 +261,12 @@ var collection = {
     	headshot:'img/gillespie.jpg', 
     	name: 'Dizzy Gillespie', 
     	wikiLink:'http://en.wikipedia.org/wiki/Dizzy_Gillespie',
-    	question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
+    	question: 'In the early days of the Bebop style of Jazz, Gillespie frequented jam sessions with Charlie Parker at this famous night club in New York City:',
+		answerA: 'Village Vanguard',
+		answerB: 'Minton\'s Playhouse',
+		answerC: 'Blue Note',
+		answerD: 'The Cotton Club',
+		answerCorrect: 'a',
 		answered: false },
     'monk' : { 
     	headshot:'img/monk.jpg', 
@@ -302,12 +283,12 @@ var collection = {
     	headshot:'img/hawkins.jpg', 
     	name: 'Coleman Hawkins', 
     	wikiLink:'http://en.wikipedia.org/wiki/Coleman_Hawkins',
-    	question: '',
-		answerA: '',
-		answerB: '',
-		answerC: '',
-		answerD: '',
-		answerCorrect: '',
+    	question: 'Hawkins first recorded this jazz standard in 1939.  It is this version of the popular swing tune that is considered one of the "early tremors of bebop."',
+		answerA: 'April in Paris',
+		answerB: 'Salt Peanuts',
+		answerC: 'My Funny Valentine',
+		answerD: 'Body and Soul',
+		answerCorrect: 'd',
 		answered: false }
 	};
 

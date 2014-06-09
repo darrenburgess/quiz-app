@@ -221,7 +221,7 @@ section {
     width: 625px;
     height: 300px;
     text-align: left;
-    background: rgba(0, 0, 0, 0.80);
+    background: rgba(0, 0, 0, 0.8);
     display: none;
 }
 
@@ -235,7 +235,7 @@ section {
     width: 200px;
     top: 40px;
     right: 40px;
-    background: rgba(0, 0, 0, 0.80);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .close-question {
