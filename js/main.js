@@ -217,7 +217,7 @@ var collection = {
     	headshot:'img/blakey.jpg', 
     	name: 'Art Blakey', 
     	wikiLink:'http://en.wikipedia.org/wiki/Art_Blakey',
-    	question: 'Blakey was well known for hiring many young jazz musicians that later became famous (ex: Wynton Marsalis).  The name of his band was: ',
+    	question: 'Blakey was well known for hiring many young jazz musicians that later became famous (ex: Wynton Marsalis).  The name of his band was:',
 		answerA: 'The Jazz Train',
 		answerB: 'Art Blakey plus Five',
 		answerC: 'The Jazz Messengers',
@@ -266,7 +266,7 @@ var collection = {
 		answerB: 'Minton\'s Playhouse',
 		answerC: 'Blue Note',
 		answerD: 'The Cotton Club',
-		answerCorrect: 'a',
+		answerCorrect: 'b',
 		answered: false },
     'monk' : { 
     	headshot:'img/monk.jpg', 
