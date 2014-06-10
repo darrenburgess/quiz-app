@@ -84,14 +84,15 @@ var renderQuestionBox = function(){
 	if(answered === false){
 		correctResult.hide();
 	} else {
-		evaluateAnswer(answered, correctAnswer);
+		evaluateAnswer(answered, correctAnswer, answered);
 	}
 };
+
+
 
 // bind the image and image map to image mapster library
 image.mapster({
 	singleSelect: false,
-	set: true,
 	fill: true, 
 	fillOpacity: 0.0,
 	stroke: true,
@@ -110,19 +111,30 @@ image.mapster({
 
 clickArea.mapster('set', true);
 
+// $('area.test').mapster('set', true, options = {
+// 	fill: true,
+// 	fillOpacity: 0.5,
+// 	fillColor: '00FF00',
+// });
+
 ////////////////////////////////
 // Quiz behavior              //
 ////////////////////////////////
 
 // evaluate correctness of answer and display result
-var evaluateAnswer = function(answer, correctAnswer){
+var evaluateAnswer = function(answer, correctAnswer, alreadyAnswered){
 	if(answer.toUpperCase() === correctAnswer.toUpperCase()){
-			numberCorrectJQ.text(++numberCorrect);
+		console.log('test'+alreadyAnswered);
+			if(alreadyAnswered == false){
+				numberCorrectJQ.text(++numberCorrect);
+			}
 			correctResult.show().text("Correct! You answered " + answer.toUpperCase() + ".");
 		} else {
 			correctResult.show().text("Incorrect! The correct answer is " + correctAnswer.toUpperCase() + ".");
 		}
-	numberAnsweredJQ.text(++numberAnswered);
+	if(alreadyAnswered == false){
+		numberAnsweredJQ.text(++numberAnswered);
+	}
 };
 
 // On click of answer
@@ -131,9 +143,8 @@ answer.click(function(e){
 		var selectedAnswer = e.target.id.slice(-1);
 		numberCorrect = parseInt(numberCorrectJQ.text());
 		numberAnswered = parseInt(numberAnsweredJQ.text());
-		evaluateAnswer(selectedAnswer, correctAnswer);
+		evaluateAnswer(selectedAnswer, correctAnswer, data.answered);
 		data.answered = selectedAnswer;
-		$('blakey').mapster();
 	}
 });
 
