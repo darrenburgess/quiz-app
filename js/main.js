@@ -125,14 +125,14 @@ clickArea.mapster('set', true);
 var evaluateAnswer = function(answer, correctAnswer, alreadyAnswered){
 	if(answer.toUpperCase() === correctAnswer.toUpperCase()){
 		console.log('test'+alreadyAnswered);
-			if(alreadyAnswered == false){
+			if(alreadyAnswered === false){
 				numberCorrectJQ.text(++numberCorrect);
 			}
 			correctResult.show().text("Correct! You answered " + answer.toUpperCase() + ".");
 		} else {
 			correctResult.show().text("Incorrect! The correct answer is " + correctAnswer.toUpperCase() + ".");
 		}
-	if(alreadyAnswered == false){
+	if(alreadyAnswered === false){
 		numberAnsweredJQ.text(++numberAnswered);
 	}
 };
