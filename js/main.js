@@ -48,9 +48,9 @@ whatButton.click(function(){
 
 // dismiss popover
 var closeRoutine = function(){
-	questionBox.fadeOut(1000);
-	overlayInfo.fadeOut(1000);
-	questionArea.fadeOut(1000);
+	questionBox.fadeOut(250);
+	overlayInfo.fadeOut(250);
+	questionArea.fadeOut(250);
 };
 
 $(document).keyup(function(e){
@@ -111,7 +111,22 @@ image.mapster({
 
 clickArea.mapster('set', true);
 
-// $('area.test').mapster('set', true, options = {
+image.mapster({
+	areas: [{
+		mapKey: 'hjones',
+		fillColor: 'FF0000'
+	},
+	{
+		mapKey: 'jjones',
+		fillColor: '00FF00'
+	}
+	]
+});
+
+// This may work:
+// http://stackoverflow.com/questions/11682309/imagemapster-rendering-different-styles-for-different-classes-of-areas
+// http://jsfiddle.net/eaf2G/
+// $('area.test').mapster('set', true, {
 // 	fill: true,
 // 	fillOpacity: 0.5,
 // 	fillColor: '00FF00',
@@ -168,7 +183,8 @@ var collection = {
     'rollins' : { 
     	headshot:'img/rollins.jpg', 
     	name: 'Sonny Rollins', 
-    	wikiLink:'Rollins is well known for practicing long hours on this New York City bridge:',
+    	wikiLink:'http://en.wikipedia.org/wiki/Sonny_Rollins',
+    	question:'Rollins is well known for practicing long hours on this New York City bridge:',
 		answerA: 'George Washington Bridge',
 		answerB: 'Brooklyn Bridge',
 		answerC: 'Williamsburg Bridge',
