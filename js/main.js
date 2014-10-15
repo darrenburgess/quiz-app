@@ -111,18 +111,6 @@ image.mapster({
 
 clickArea.mapster('set', true);
 
-image.mapster({
-	areas: [{
-		mapKey: 'hjones',
-		fillColor: 'FF0000'
-	},
-	{
-		mapKey: 'jjones',
-		fillColor: '00FF00'
-	}
-	]
-});
-
 // This may work:
 // http://stackoverflow.com/questions/11682309/imagemapster-rendering-different-styles-for-different-classes-of-areas
 // http://jsfiddle.net/eaf2G/
