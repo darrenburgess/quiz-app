@@ -127,7 +127,6 @@ clickArea.mapster('set', true);
 // evaluate correctness of answer and display result
 var evaluateAnswer = function(answer, correctAnswer, alreadyAnswered){
 	if(answer.toUpperCase() === correctAnswer.toUpperCase()){
-		console.log('test'+alreadyAnswered);
 			if(alreadyAnswered === false){
 				numberCorrectJQ.text(++numberCorrect);
 			}
